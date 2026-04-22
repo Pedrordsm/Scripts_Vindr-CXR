@@ -2,3 +2,5 @@ pandas
 matplotlib
 numpy
 ultralytics
+opencv-python
+ensemble-boxes

@@ -61,8 +61,6 @@ pip install -r requirements.txt
 
 # Scripts
 
-## `anotacao.py`
-
 Lê o CSV de anotações do Vindr-CXR e gera um arquivo `.txt` por radiologista com suas respectivas anotações.
 
 ```bash
@@ -132,3 +130,37 @@ python graficar_anotadores.py --pasta anotadores
 | Argumento | Padrão | Descrição |
 |-----------|--------|-----------|
 | `--pasta` | `anotadores` | Pasta com os arquivos TXT dos anotadores |
+
+---
+
+## `wbf.py`
+
+Aplica Weighted Boxes Fusion (WBF) em anotações YOLO geradas por múltiplos anotadores, fundindo caixas sobrepostas e atribuindo scores de consenso.
+
+```bash
+python wbf.py --entrada pasta/anotadores --saida resultado --iou-consenso 0.5 --wbf-iou 0.5
+```
+
+| Argumento | Padrão | Descrição |
+|-----------|--------|-----------|
+| `--entrada` | *(definido no script)* | Pasta com os arquivos TXT de entrada |
+| `--saida` | `resultado` | Pasta de saída dos resultados |
+| `--iou-consenso` | `0.5` | IoU mínimo para concordância entre anotadores |
+| `--wbf-iou` | `0.5` | Threshold de IoU para o WBF |
+
+---
+
+## `plot.py`
+
+Plota bounding boxes de um arquivo de anotações YOLO sobre uma imagem e salva o resultado.
+
+```bash
+python plot.py --imagem caminho/imagem.png --txt caminho/anotacoes.txt --saida saida.png
+```
+
+| Argumento | Padrão | Descrição |
+|-----------|--------|-----------|
+| `--imagem` | *(obrigatório)* | Caminho para a imagem |
+| `--txt` | *(obrigatório)* | Caminho para o arquivo TXT de anotações YOLO |
+| `--classes` | *(lista de 14 classes)* | Nomes das classes (separados por espaço) |
+| `--saida` | `imagem.png` | Caminho da imagem de saída |
