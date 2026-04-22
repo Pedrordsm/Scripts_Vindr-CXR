@@ -61,6 +61,8 @@ pip install -r requirements.txt
 
 # Scripts
 
+## `anotacao.py`
+
 Lê o CSV de anotações do Vindr-CXR e gera um arquivo `.txt` por radiologista com suas respectivas anotações.
 
 ```bash
